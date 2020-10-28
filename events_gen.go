@@ -15,42 +15,42 @@ func AllEvents() []string {
 
 func AllEventsExcept(except ...string) []string {
 	evtsMap := map[string]int8{
-		EvtChannelCreate:              0,
-		EvtChannelDelete:              0,
-		EvtChannelPinsUpdate:          0,
-		EvtChannelUpdate:              0,
-		EvtGuildBanAdd:                0,
-		EvtGuildBanRemove:             0,
-		EvtGuildCreate:                0,
-		EvtGuildDelete:                0,
-		EvtGuildEmojisUpdate:          0,
-		EvtGuildIntegrationsUpdate:    0,
-		EvtGuildMemberAdd:             0,
-		EvtGuildMemberRemove:          0,
-		EvtGuildMemberUpdate:          0,
-		EvtGuildMembersChunk:          0,
-		EvtGuildRoleCreate:            0,
-		EvtGuildRoleDelete:            0,
-		EvtGuildRoleUpdate:            0,
-		EvtGuildUpdate:                0,
-		EvtInviteCreate:               0,
-		EvtInviteDelete:               0,
-		EvtMessageCreate:              0,
-		EvtMessageDelete:              0,
-		EvtMessageDeleteBulk:          0,
-		EvtMessageReactionAdd:         0,
-		EvtMessageReactionRemove:      0,
-		EvtMessageReactionRemoveAll:   0,
-		EvtMessageReactionRemoveEmoji: 0,
-		EvtMessageUpdate:              0,
-		EvtPresenceUpdate:             0,
-		EvtReady:                      0,
-		EvtResumed:                    0,
-		EvtTypingStart:                0,
-		EvtUserUpdate:                 0,
-		EvtVoiceServerUpdate:          0,
-		EvtVoiceStateUpdate:           0,
-		EvtWebhooksUpdate:             0,
+		event.ChannelCreate:              0,
+		event.ChannelDelete:              0,
+		event.ChannelPinsUpdate:          0,
+		event.ChannelUpdate:              0,
+		event.GuildBanAdd:                0,
+		event.GuildBanRemove:             0,
+		event.GuildCreate:                0,
+		event.GuildDelete:                0,
+		event.GuildEmojisUpdate:          0,
+		event.GuildIntegrationsUpdate:    0,
+		event.GuildMemberAdd:             0,
+		event.GuildMemberRemove:          0,
+		event.GuildMemberUpdate:          0,
+		event.GuildMembersChunk:          0,
+		event.GuildRoleCreate:            0,
+		event.GuildRoleDelete:            0,
+		event.GuildRoleUpdate:            0,
+		event.GuildUpdate:                0,
+		event.InviteCreate:               0,
+		event.InviteDelete:               0,
+		event.MessageCreate:              0,
+		event.MessageDelete:              0,
+		event.MessageDeleteBulk:          0,
+		event.MessageReactionAdd:         0,
+		event.MessageReactionRemove:      0,
+		event.MessageReactionRemoveAll:   0,
+		event.MessageReactionRemoveEmoji: 0,
+		event.MessageUpdate:              0,
+		event.PresenceUpdate:             0,
+		event.Ready:                      0,
+		event.Resumed:                    0,
+		event.TypingStart:                0,
+		event.UserUpdate:                 0,
+		event.VoiceServerUpdate:          0,
+		event.VoiceStateUpdate:           0,
+		event.WebhooksUpdate:             0,
 	}
 
 	for i := range except {
@@ -69,7 +69,7 @@ func AllEventsExcept(except ...string) []string {
 // EvtChannelCreate Sent when a new channel is created, relevant to the current user. The inner payload is a DM channel or
 // guild channel object.
 //
-const EvtChannelCreate = event.ChannelCreate
+//const EvtChannelCreate = event.ChannelCreate
 
 func (h *ChannelCreate) setShardID(id uint) { h.ShardID = id }
 
@@ -79,7 +79,7 @@ type handlerChannelCreate = func(Session, *ChannelCreate)
 
 // EvtChannelDelete Sent when a channel relevant to the current user is deleted. The inner payload is a DM or Guild channel object.
 //
-const EvtChannelDelete = event.ChannelDelete
+//const EvtChannelDelete = event.ChannelDelete
 
 func (h *ChannelDelete) setShardID(id uint) { h.ShardID = id }
 
@@ -93,7 +93,7 @@ type handlerChannelDelete = func(Session, *ChannelDelete)
 //  - LastPinTimestamp time.Now().UTC().Format(time.RFC3339)
 // TODO fix.
 //
-const EvtChannelPinsUpdate = event.ChannelPinsUpdate
+//const EvtChannelPinsUpdate = event.ChannelPinsUpdate
 
 func (h *ChannelPinsUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -103,7 +103,7 @@ type handlerChannelPinsUpdate = func(Session, *ChannelPinsUpdate)
 
 // EvtChannelUpdate Sent when a channel is updated. The inner payload is a guild channel object.
 //
-const EvtChannelUpdate = event.ChannelUpdate
+//const EvtChannelUpdate = event.ChannelUpdate
 
 func (h *ChannelUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -113,7 +113,7 @@ type handlerChannelUpdate = func(Session, *ChannelUpdate)
 
 // EvtGuildBanAdd Sent when a user is banned from a guild. The inner payload is a user object, with an extra guild_id key.
 //
-const EvtGuildBanAdd = event.GuildBanAdd
+//const EvtGuildBanAdd = event.GuildBanAdd
 
 func (h *GuildBanAdd) setShardID(id uint) { h.ShardID = id }
 
@@ -123,7 +123,7 @@ type handlerGuildBanAdd = func(Session, *GuildBanAdd)
 
 // EvtGuildBanRemove Sent when a user is unbanned from a guild. The inner payload is a user object, with an extra guild_id key.
 //
-const EvtGuildBanRemove = event.GuildBanRemove
+//const EvtGuildBanRemove = event.GuildBanRemove
 
 func (h *GuildBanRemove) setShardID(id uint) { h.ShardID = id }
 
@@ -137,7 +137,7 @@ type handlerGuildBanRemove = func(Session, *GuildBanRemove)
 // 	2. When a Guild becomes available again to the client.
 // 	3. When the current user joins a new Guild.
 //
-const EvtGuildCreate = event.GuildCreate
+//const EvtGuildCreate = event.GuildCreate
 
 func (h *GuildCreate) setShardID(id uint) { h.ShardID = id }
 
@@ -149,7 +149,7 @@ type handlerGuildCreate = func(Session, *GuildCreate)
 // The inner payload is an unavailable guild object. If the unavailable field is not set, the user was removed
 // from the guild.
 //
-const EvtGuildDelete = event.GuildDelete
+//const EvtGuildDelete = event.GuildDelete
 
 func (h *GuildDelete) setShardID(id uint) { h.ShardID = id }
 
@@ -162,7 +162,7 @@ type handlerGuildDelete = func(Session, *GuildDelete)
 //  - GuildID Snowflake
 //  - Emojis []*Emoji
 //
-const EvtGuildEmojisUpdate = event.GuildEmojisUpdate
+//const EvtGuildEmojisUpdate = event.GuildEmojisUpdate
 
 func (h *GuildEmojisUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -174,7 +174,7 @@ type handlerGuildEmojisUpdate = func(Session, *GuildEmojisUpdate)
 //  Fields:
 //  - GuildID Snowflake
 //
-const EvtGuildIntegrationsUpdate = event.GuildIntegrationsUpdate
+//const EvtGuildIntegrationsUpdate = event.GuildIntegrationsUpdate
 
 func (h *GuildIntegrationsUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -188,7 +188,7 @@ type handlerGuildIntegrationsUpdate = func(Session, *GuildIntegrationsUpdate)
 //  Fields:
 //  - Member *Member
 //
-const EvtGuildMemberAdd = event.GuildMemberAdd
+//const EvtGuildMemberAdd = event.GuildMemberAdd
 
 func (h *GuildMemberAdd) setShardID(id uint) { h.ShardID = id }
 
@@ -201,7 +201,7 @@ type handlerGuildMemberAdd = func(Session, *GuildMemberAdd)
 //  - GuildID   Snowflake
 //  - User      *User
 //
-const EvtGuildMemberRemove = event.GuildMemberRemove
+//const EvtGuildMemberRemove = event.GuildMemberRemove
 
 func (h *GuildMemberRemove) setShardID(id uint) { h.ShardID = id }
 
@@ -216,7 +216,7 @@ type handlerGuildMemberRemove = func(Session, *GuildMemberRemove)
 //  - User      *User
 //  - Nick      string
 //
-const EvtGuildMemberUpdate = event.GuildMemberUpdate
+//const EvtGuildMemberUpdate = event.GuildMemberUpdate
 
 func (h *GuildMemberUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -229,7 +229,7 @@ type handlerGuildMemberUpdate = func(Session, *GuildMemberUpdate)
 //  - GuildID Snowflake
 //  - Members []*Member
 //
-const EvtGuildMembersChunk = event.GuildMembersChunk
+//const EvtGuildMembersChunk = event.GuildMembersChunk
 
 func (h *GuildMembersChunk) setShardID(id uint) { h.ShardID = id }
 
@@ -242,7 +242,7 @@ type handlerGuildMembersChunk = func(Session, *GuildMembersChunk)
 //  - GuildID   Snowflake
 //  - Role      *Role
 //
-const EvtGuildRoleCreate = event.GuildRoleCreate
+//const EvtGuildRoleCreate = event.GuildRoleCreate
 
 func (h *GuildRoleCreate) setShardID(id uint) { h.ShardID = id }
 
@@ -255,7 +255,7 @@ type handlerGuildRoleCreate = func(Session, *GuildRoleCreate)
 //  - GuildID Snowflake
 //  - RoleID  Snowflake
 //
-const EvtGuildRoleDelete = event.GuildRoleDelete
+//const EvtGuildRoleDelete = event.GuildRoleDelete
 
 func (h *GuildRoleDelete) setShardID(id uint) { h.ShardID = id }
 
@@ -268,7 +268,7 @@ type handlerGuildRoleDelete = func(Session, *GuildRoleDelete)
 //  - GuildID Snowflake
 //  - Role    *Role
 //
-const EvtGuildRoleUpdate = event.GuildRoleUpdate
+//const EvtGuildRoleUpdate = event.GuildRoleUpdate
 
 func (h *GuildRoleUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -278,7 +278,7 @@ type handlerGuildRoleUpdate = func(Session, *GuildRoleUpdate)
 
 // EvtGuildUpdate Sent when a guild is updated. The inner payload is a guild object.
 //
-const EvtGuildUpdate = event.GuildUpdate
+//const EvtGuildUpdate = event.GuildUpdate
 
 func (h *GuildUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -305,7 +305,7 @@ type handlerGuildUpdate = func(Session, *GuildUpdate)
 //  - ApproximatePresenceCount int
 //  - ApproximateMemberCount int
 //
-const EvtInviteCreate = event.InviteCreate
+//const EvtInviteCreate = event.InviteCreate
 
 func (h *InviteCreate) setShardID(id uint) { h.ShardID = id }
 
@@ -315,7 +315,7 @@ type handlerInviteCreate = func(Session, *InviteCreate)
 
 // EvtInviteDelete Sent when an invite is deleted.
 //
-const EvtInviteDelete = event.InviteDelete
+//const EvtInviteDelete = event.InviteDelete
 
 func (h *InviteDelete) setShardID(id uint) { h.ShardID = id }
 
@@ -325,7 +325,7 @@ type handlerInviteDelete = func(Session, *InviteDelete)
 
 // EvtMessageCreate Sent when a message is created. The inner payload is a message object.
 //
-const EvtMessageCreate = event.MessageCreate
+//const EvtMessageCreate = event.MessageCreate
 
 func (h *MessageCreate) setShardID(id uint) { h.ShardID = id }
 
@@ -338,7 +338,7 @@ type handlerMessageCreate = func(Session, *MessageCreate)
 //  - ID        Snowflake
 //  - ChannelID Snowflake
 //
-const EvtMessageDelete = event.MessageDelete
+//const EvtMessageDelete = event.MessageDelete
 
 func (h *MessageDelete) setShardID(id uint) { h.ShardID = id }
 
@@ -351,7 +351,7 @@ type handlerMessageDelete = func(Session, *MessageDelete)
 //  - IDs       []Snowflake
 //  - ChannelID Snowflake
 //
-const EvtMessageDeleteBulk = event.MessageDeleteBulk
+//const EvtMessageDeleteBulk = event.MessageDeleteBulk
 
 func (h *MessageDeleteBulk) setShardID(id uint) { h.ShardID = id }
 
@@ -366,7 +366,7 @@ type handlerMessageDeleteBulk = func(Session, *MessageDeleteBulk)
 //  - MessageID  Snowflake
 //  - Emoji      *Emoji
 //
-const EvtMessageReactionAdd = event.MessageReactionAdd
+//const EvtMessageReactionAdd = event.MessageReactionAdd
 
 func (h *MessageReactionAdd) setShardID(id uint) { h.ShardID = id }
 
@@ -381,7 +381,7 @@ type handlerMessageReactionAdd = func(Session, *MessageReactionAdd)
 //  - MessageID  Snowflake
 //  - Emoji      *Emoji
 //
-const EvtMessageReactionRemove = event.MessageReactionRemove
+//const EvtMessageReactionRemove = event.MessageReactionRemove
 
 func (h *MessageReactionRemove) setShardID(id uint) { h.ShardID = id }
 
@@ -394,7 +394,7 @@ type handlerMessageReactionRemove = func(Session, *MessageReactionRemove)
 //  - ChannelID Snowflake
 //  - MessageID Snowflake
 //
-const EvtMessageReactionRemoveAll = event.MessageReactionRemoveAll
+//const EvtMessageReactionRemoveAll = event.MessageReactionRemoveAll
 
 func (h *MessageReactionRemoveAll) setShardID(id uint) { h.ShardID = id }
 
@@ -404,7 +404,7 @@ type handlerMessageReactionRemoveAll = func(Session, *MessageReactionRemoveAll)
 
 // EvtMessageReactionRemoveEmoji Sent when a bot removes all instances of a given emoji from the reactions of a message.
 //
-const EvtMessageReactionRemoveEmoji = event.MessageReactionRemoveEmoji
+//const EvtMessageReactionRemoveEmoji = event.MessageReactionRemoveEmoji
 
 func (h *MessageReactionRemoveEmoji) setShardID(id uint) { h.ShardID = id }
 
@@ -416,7 +416,7 @@ type handlerMessageReactionRemoveEmoji = func(Session, *MessageReactionRemoveEmo
 //
 // NOTE! Has _at_least_ the GuildID and ChannelID fields.
 //
-const EvtMessageUpdate = event.MessageUpdate
+//const EvtMessageUpdate = event.MessageUpdate
 
 func (h *MessageUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -432,7 +432,7 @@ type handlerMessageUpdate = func(Session, *MessageUpdate)
 //  - GuildID Snowflake
 //  - Status  string
 //
-const EvtPresenceUpdate = event.PresenceUpdate
+//const EvtPresenceUpdate = event.PresenceUpdate
 
 func (h *PresenceUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -451,7 +451,7 @@ type handlerPresenceUpdate = func(Session, *PresenceUpdate)
 // //  - SessionID string
 // //  - Trace []string
 //
-const EvtReady = event.Ready
+//const EvtReady = event.Ready
 
 func (h *Ready) setShardID(id uint) { h.ShardID = id }
 
@@ -464,7 +464,7 @@ type handlerReady = func(Session, *Ready)
 //  Fields:
 //  - Trace []string
 //
-const EvtResumed = event.Resumed
+//const EvtResumed = event.Resumed
 
 func (h *Resumed) setShardID(id uint) { h.ShardID = id }
 
@@ -478,7 +478,7 @@ type handlerResumed = func(Session, *Resumed)
 //  - UserID        Snowflake
 //  - TimestampUnix int
 //
-const EvtTypingStart = event.TypingStart
+//const EvtTypingStart = event.TypingStart
 
 func (h *TypingStart) setShardID(id uint) { h.ShardID = id }
 
@@ -488,7 +488,7 @@ type handlerTypingStart = func(Session, *TypingStart)
 
 // EvtUserUpdate Sent when properties about the user change. Inner payload is a user object.
 //
-const EvtUserUpdate = event.UserUpdate
+//const EvtUserUpdate = event.UserUpdate
 
 func (h *UserUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -503,7 +503,7 @@ type handlerUserUpdate = func(Session, *UserUpdate)
 //  - ChannelID Snowflake
 //  - Endpoint  string
 //
-const EvtVoiceServerUpdate = event.VoiceServerUpdate
+//const EvtVoiceServerUpdate = event.VoiceServerUpdate
 
 func (h *VoiceServerUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -513,7 +513,7 @@ type handlerVoiceServerUpdate = func(Session, *VoiceServerUpdate)
 
 // EvtVoiceStateUpdate Sent when someone joins/leaves/moves voice channels. Inner payload is a voice state object.
 //
-const EvtVoiceStateUpdate = event.VoiceStateUpdate
+//const EvtVoiceStateUpdate = event.VoiceStateUpdate
 
 func (h *VoiceStateUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -526,7 +526,7 @@ type handlerVoiceStateUpdate = func(Session, *VoiceStateUpdate)
 //  - GuildID   Snowflake
 //  - ChannelID Snowflake
 //
-const EvtWebhooksUpdate = event.WebhooksUpdate
+//const EvtWebhooksUpdate = event.WebhooksUpdate
 
 func (h *WebhooksUpdate) setShardID(id uint) { h.ShardID = id }
 
@@ -579,7 +579,7 @@ func (shr socketHandlerRegister) WithMiddleware(first Middleware, extra ...Middl
 }
 
 func (shr socketHandlerRegister) ChannelCreate(handler handlerChannelCreate, moreHandlers ...handlerChannelCreate) {
-	shr.evtName = EvtChannelCreate
+	shr.evtName = event.ChannelCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -587,7 +587,7 @@ func (shr socketHandlerRegister) ChannelCreate(handler handlerChannelCreate, mor
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelCreateChan(handler chan *ChannelCreate, moreHandlers ...chan *ChannelCreate) {
-	shr.evtName = EvtChannelCreate
+	shr.evtName = event.ChannelCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -595,7 +595,7 @@ func (shr socketHandlerRegister) ChannelCreateChan(handler chan *ChannelCreate, 
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelDelete(handler handlerChannelDelete, moreHandlers ...handlerChannelDelete) {
-	shr.evtName = EvtChannelDelete
+	shr.evtName = event.ChannelDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -603,7 +603,7 @@ func (shr socketHandlerRegister) ChannelDelete(handler handlerChannelDelete, mor
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelDeleteChan(handler chan *ChannelDelete, moreHandlers ...chan *ChannelDelete) {
-	shr.evtName = EvtChannelDelete
+	shr.evtName = event.ChannelDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -611,7 +611,7 @@ func (shr socketHandlerRegister) ChannelDeleteChan(handler chan *ChannelDelete, 
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelPinsUpdate(handler handlerChannelPinsUpdate, moreHandlers ...handlerChannelPinsUpdate) {
-	shr.evtName = EvtChannelPinsUpdate
+	shr.evtName = event.ChannelPinsUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -619,7 +619,7 @@ func (shr socketHandlerRegister) ChannelPinsUpdate(handler handlerChannelPinsUpd
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelPinsUpdateChan(handler chan *ChannelPinsUpdate, moreHandlers ...chan *ChannelPinsUpdate) {
-	shr.evtName = EvtChannelPinsUpdate
+	shr.evtName = event.ChannelPinsUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -627,7 +627,7 @@ func (shr socketHandlerRegister) ChannelPinsUpdateChan(handler chan *ChannelPins
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelUpdate(handler handlerChannelUpdate, moreHandlers ...handlerChannelUpdate) {
-	shr.evtName = EvtChannelUpdate
+	shr.evtName = event.ChannelUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -635,7 +635,7 @@ func (shr socketHandlerRegister) ChannelUpdate(handler handlerChannelUpdate, mor
 	shr.build()
 }
 func (shr socketHandlerRegister) ChannelUpdateChan(handler chan *ChannelUpdate, moreHandlers ...chan *ChannelUpdate) {
-	shr.evtName = EvtChannelUpdate
+	shr.evtName = event.ChannelUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -643,7 +643,7 @@ func (shr socketHandlerRegister) ChannelUpdateChan(handler chan *ChannelUpdate, 
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildBanAdd(handler handlerGuildBanAdd, moreHandlers ...handlerGuildBanAdd) {
-	shr.evtName = EvtGuildBanAdd
+	shr.evtName = event.GuildBanAdd
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -651,7 +651,7 @@ func (shr socketHandlerRegister) GuildBanAdd(handler handlerGuildBanAdd, moreHan
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildBanAddChan(handler chan *GuildBanAdd, moreHandlers ...chan *GuildBanAdd) {
-	shr.evtName = EvtGuildBanAdd
+	shr.evtName = event.GuildBanAdd
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -659,7 +659,7 @@ func (shr socketHandlerRegister) GuildBanAddChan(handler chan *GuildBanAdd, more
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildBanRemove(handler handlerGuildBanRemove, moreHandlers ...handlerGuildBanRemove) {
-	shr.evtName = EvtGuildBanRemove
+	shr.evtName = event.GuildBanRemove
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -667,7 +667,7 @@ func (shr socketHandlerRegister) GuildBanRemove(handler handlerGuildBanRemove, m
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildBanRemoveChan(handler chan *GuildBanRemove, moreHandlers ...chan *GuildBanRemove) {
-	shr.evtName = EvtGuildBanRemove
+	shr.evtName = event.GuildBanRemove
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -675,7 +675,7 @@ func (shr socketHandlerRegister) GuildBanRemoveChan(handler chan *GuildBanRemove
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildCreate(handler handlerGuildCreate, moreHandlers ...handlerGuildCreate) {
-	shr.evtName = EvtGuildCreate
+	shr.evtName = event.GuildCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -683,7 +683,7 @@ func (shr socketHandlerRegister) GuildCreate(handler handlerGuildCreate, moreHan
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildCreateChan(handler chan *GuildCreate, moreHandlers ...chan *GuildCreate) {
-	shr.evtName = EvtGuildCreate
+	shr.evtName = event.GuildCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -691,7 +691,7 @@ func (shr socketHandlerRegister) GuildCreateChan(handler chan *GuildCreate, more
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildDelete(handler handlerGuildDelete, moreHandlers ...handlerGuildDelete) {
-	shr.evtName = EvtGuildDelete
+	shr.evtName = event.GuildDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -699,7 +699,7 @@ func (shr socketHandlerRegister) GuildDelete(handler handlerGuildDelete, moreHan
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildDeleteChan(handler chan *GuildDelete, moreHandlers ...chan *GuildDelete) {
-	shr.evtName = EvtGuildDelete
+	shr.evtName = event.GuildDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -707,7 +707,7 @@ func (shr socketHandlerRegister) GuildDeleteChan(handler chan *GuildDelete, more
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildEmojisUpdate(handler handlerGuildEmojisUpdate, moreHandlers ...handlerGuildEmojisUpdate) {
-	shr.evtName = EvtGuildEmojisUpdate
+	shr.evtName = event.GuildEmojisUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -715,7 +715,7 @@ func (shr socketHandlerRegister) GuildEmojisUpdate(handler handlerGuildEmojisUpd
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildEmojisUpdateChan(handler chan *GuildEmojisUpdate, moreHandlers ...chan *GuildEmojisUpdate) {
-	shr.evtName = EvtGuildEmojisUpdate
+	shr.evtName = event.GuildEmojisUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -723,7 +723,7 @@ func (shr socketHandlerRegister) GuildEmojisUpdateChan(handler chan *GuildEmojis
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildIntegrationsUpdate(handler handlerGuildIntegrationsUpdate, moreHandlers ...handlerGuildIntegrationsUpdate) {
-	shr.evtName = EvtGuildIntegrationsUpdate
+	shr.evtName = event.GuildIntegrationsUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -731,7 +731,7 @@ func (shr socketHandlerRegister) GuildIntegrationsUpdate(handler handlerGuildInt
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildIntegrationsUpdateChan(handler chan *GuildIntegrationsUpdate, moreHandlers ...chan *GuildIntegrationsUpdate) {
-	shr.evtName = EvtGuildIntegrationsUpdate
+	shr.evtName = event.GuildIntegrationsUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -739,7 +739,7 @@ func (shr socketHandlerRegister) GuildIntegrationsUpdateChan(handler chan *Guild
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMemberAdd(handler handlerGuildMemberAdd, moreHandlers ...handlerGuildMemberAdd) {
-	shr.evtName = EvtGuildMemberAdd
+	shr.evtName = event.GuildMemberAdd
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -747,7 +747,7 @@ func (shr socketHandlerRegister) GuildMemberAdd(handler handlerGuildMemberAdd, m
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMemberAddChan(handler chan *GuildMemberAdd, moreHandlers ...chan *GuildMemberAdd) {
-	shr.evtName = EvtGuildMemberAdd
+	shr.evtName = event.GuildMemberAdd
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -755,7 +755,7 @@ func (shr socketHandlerRegister) GuildMemberAddChan(handler chan *GuildMemberAdd
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMemberRemove(handler handlerGuildMemberRemove, moreHandlers ...handlerGuildMemberRemove) {
-	shr.evtName = EvtGuildMemberRemove
+	shr.evtName = event.GuildMemberRemove
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -763,7 +763,7 @@ func (shr socketHandlerRegister) GuildMemberRemove(handler handlerGuildMemberRem
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMemberRemoveChan(handler chan *GuildMemberRemove, moreHandlers ...chan *GuildMemberRemove) {
-	shr.evtName = EvtGuildMemberRemove
+	shr.evtName = event.GuildMemberRemove
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -771,7 +771,7 @@ func (shr socketHandlerRegister) GuildMemberRemoveChan(handler chan *GuildMember
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMemberUpdate(handler handlerGuildMemberUpdate, moreHandlers ...handlerGuildMemberUpdate) {
-	shr.evtName = EvtGuildMemberUpdate
+	shr.evtName = event.GuildMemberUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -779,7 +779,7 @@ func (shr socketHandlerRegister) GuildMemberUpdate(handler handlerGuildMemberUpd
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMemberUpdateChan(handler chan *GuildMemberUpdate, moreHandlers ...chan *GuildMemberUpdate) {
-	shr.evtName = EvtGuildMemberUpdate
+	shr.evtName = event.GuildMemberUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -787,7 +787,7 @@ func (shr socketHandlerRegister) GuildMemberUpdateChan(handler chan *GuildMember
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMembersChunk(handler handlerGuildMembersChunk, moreHandlers ...handlerGuildMembersChunk) {
-	shr.evtName = EvtGuildMembersChunk
+	shr.evtName = event.GuildMembersChunk
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -795,7 +795,7 @@ func (shr socketHandlerRegister) GuildMembersChunk(handler handlerGuildMembersCh
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildMembersChunkChan(handler chan *GuildMembersChunk, moreHandlers ...chan *GuildMembersChunk) {
-	shr.evtName = EvtGuildMembersChunk
+	shr.evtName = event.GuildMembersChunk
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -803,7 +803,7 @@ func (shr socketHandlerRegister) GuildMembersChunkChan(handler chan *GuildMember
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildRoleCreate(handler handlerGuildRoleCreate, moreHandlers ...handlerGuildRoleCreate) {
-	shr.evtName = EvtGuildRoleCreate
+	shr.evtName = event.GuildRoleCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -811,7 +811,7 @@ func (shr socketHandlerRegister) GuildRoleCreate(handler handlerGuildRoleCreate,
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildRoleCreateChan(handler chan *GuildRoleCreate, moreHandlers ...chan *GuildRoleCreate) {
-	shr.evtName = EvtGuildRoleCreate
+	shr.evtName = event.GuildRoleCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -819,7 +819,7 @@ func (shr socketHandlerRegister) GuildRoleCreateChan(handler chan *GuildRoleCrea
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildRoleDelete(handler handlerGuildRoleDelete, moreHandlers ...handlerGuildRoleDelete) {
-	shr.evtName = EvtGuildRoleDelete
+	shr.evtName = event.GuildRoleDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -827,7 +827,7 @@ func (shr socketHandlerRegister) GuildRoleDelete(handler handlerGuildRoleDelete,
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildRoleDeleteChan(handler chan *GuildRoleDelete, moreHandlers ...chan *GuildRoleDelete) {
-	shr.evtName = EvtGuildRoleDelete
+	shr.evtName = event.GuildRoleDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -835,7 +835,7 @@ func (shr socketHandlerRegister) GuildRoleDeleteChan(handler chan *GuildRoleDele
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildRoleUpdate(handler handlerGuildRoleUpdate, moreHandlers ...handlerGuildRoleUpdate) {
-	shr.evtName = EvtGuildRoleUpdate
+	shr.evtName = event.GuildRoleUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -843,7 +843,7 @@ func (shr socketHandlerRegister) GuildRoleUpdate(handler handlerGuildRoleUpdate,
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildRoleUpdateChan(handler chan *GuildRoleUpdate, moreHandlers ...chan *GuildRoleUpdate) {
-	shr.evtName = EvtGuildRoleUpdate
+	shr.evtName = event.GuildRoleUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -851,7 +851,7 @@ func (shr socketHandlerRegister) GuildRoleUpdateChan(handler chan *GuildRoleUpda
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildUpdate(handler handlerGuildUpdate, moreHandlers ...handlerGuildUpdate) {
-	shr.evtName = EvtGuildUpdate
+	shr.evtName = event.GuildUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -859,7 +859,7 @@ func (shr socketHandlerRegister) GuildUpdate(handler handlerGuildUpdate, moreHan
 	shr.build()
 }
 func (shr socketHandlerRegister) GuildUpdateChan(handler chan *GuildUpdate, moreHandlers ...chan *GuildUpdate) {
-	shr.evtName = EvtGuildUpdate
+	shr.evtName = event.GuildUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -867,7 +867,7 @@ func (shr socketHandlerRegister) GuildUpdateChan(handler chan *GuildUpdate, more
 	shr.build()
 }
 func (shr socketHandlerRegister) InviteCreate(handler handlerInviteCreate, moreHandlers ...handlerInviteCreate) {
-	shr.evtName = EvtInviteCreate
+	shr.evtName = event.InviteCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -875,7 +875,7 @@ func (shr socketHandlerRegister) InviteCreate(handler handlerInviteCreate, moreH
 	shr.build()
 }
 func (shr socketHandlerRegister) InviteCreateChan(handler chan *InviteCreate, moreHandlers ...chan *InviteCreate) {
-	shr.evtName = EvtInviteCreate
+	shr.evtName = event.InviteCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -883,7 +883,7 @@ func (shr socketHandlerRegister) InviteCreateChan(handler chan *InviteCreate, mo
 	shr.build()
 }
 func (shr socketHandlerRegister) InviteDelete(handler handlerInviteDelete, moreHandlers ...handlerInviteDelete) {
-	shr.evtName = EvtInviteDelete
+	shr.evtName = event.InviteDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -891,7 +891,7 @@ func (shr socketHandlerRegister) InviteDelete(handler handlerInviteDelete, moreH
 	shr.build()
 }
 func (shr socketHandlerRegister) InviteDeleteChan(handler chan *InviteDelete, moreHandlers ...chan *InviteDelete) {
-	shr.evtName = EvtInviteDelete
+	shr.evtName = event.InviteDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -899,7 +899,7 @@ func (shr socketHandlerRegister) InviteDeleteChan(handler chan *InviteDelete, mo
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageCreate(handler handlerMessageCreate, moreHandlers ...handlerMessageCreate) {
-	shr.evtName = EvtMessageCreate
+	shr.evtName = event.MessageCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -907,7 +907,7 @@ func (shr socketHandlerRegister) MessageCreate(handler handlerMessageCreate, mor
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageCreateChan(handler chan *MessageCreate, moreHandlers ...chan *MessageCreate) {
-	shr.evtName = EvtMessageCreate
+	shr.evtName = event.MessageCreate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -915,7 +915,7 @@ func (shr socketHandlerRegister) MessageCreateChan(handler chan *MessageCreate, 
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageDelete(handler handlerMessageDelete, moreHandlers ...handlerMessageDelete) {
-	shr.evtName = EvtMessageDelete
+	shr.evtName = event.MessageDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -923,7 +923,7 @@ func (shr socketHandlerRegister) MessageDelete(handler handlerMessageDelete, mor
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageDeleteChan(handler chan *MessageDelete, moreHandlers ...chan *MessageDelete) {
-	shr.evtName = EvtMessageDelete
+	shr.evtName = event.MessageDelete
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -931,7 +931,7 @@ func (shr socketHandlerRegister) MessageDeleteChan(handler chan *MessageDelete, 
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageDeleteBulk(handler handlerMessageDeleteBulk, moreHandlers ...handlerMessageDeleteBulk) {
-	shr.evtName = EvtMessageDeleteBulk
+	shr.evtName = event.MessageDeleteBulk
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -939,7 +939,7 @@ func (shr socketHandlerRegister) MessageDeleteBulk(handler handlerMessageDeleteB
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageDeleteBulkChan(handler chan *MessageDeleteBulk, moreHandlers ...chan *MessageDeleteBulk) {
-	shr.evtName = EvtMessageDeleteBulk
+	shr.evtName = event.MessageDeleteBulk
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -947,7 +947,7 @@ func (shr socketHandlerRegister) MessageDeleteBulkChan(handler chan *MessageDele
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionAdd(handler handlerMessageReactionAdd, moreHandlers ...handlerMessageReactionAdd) {
-	shr.evtName = EvtMessageReactionAdd
+	shr.evtName = event.MessageReactionAdd
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -955,7 +955,7 @@ func (shr socketHandlerRegister) MessageReactionAdd(handler handlerMessageReacti
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionAddChan(handler chan *MessageReactionAdd, moreHandlers ...chan *MessageReactionAdd) {
-	shr.evtName = EvtMessageReactionAdd
+	shr.evtName = event.MessageReactionAdd
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -963,7 +963,7 @@ func (shr socketHandlerRegister) MessageReactionAddChan(handler chan *MessageRea
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionRemove(handler handlerMessageReactionRemove, moreHandlers ...handlerMessageReactionRemove) {
-	shr.evtName = EvtMessageReactionRemove
+	shr.evtName = event.MessageReactionRemove
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -971,7 +971,7 @@ func (shr socketHandlerRegister) MessageReactionRemove(handler handlerMessageRea
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionRemoveChan(handler chan *MessageReactionRemove, moreHandlers ...chan *MessageReactionRemove) {
-	shr.evtName = EvtMessageReactionRemove
+	shr.evtName = event.MessageReactionRemove
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -979,7 +979,7 @@ func (shr socketHandlerRegister) MessageReactionRemoveChan(handler chan *Message
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionRemoveAll(handler handlerMessageReactionRemoveAll, moreHandlers ...handlerMessageReactionRemoveAll) {
-	shr.evtName = EvtMessageReactionRemoveAll
+	shr.evtName = event.MessageReactionRemoveAll
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -987,7 +987,7 @@ func (shr socketHandlerRegister) MessageReactionRemoveAll(handler handlerMessage
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionRemoveAllChan(handler chan *MessageReactionRemoveAll, moreHandlers ...chan *MessageReactionRemoveAll) {
-	shr.evtName = EvtMessageReactionRemoveAll
+	shr.evtName = event.MessageReactionRemoveAll
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -995,7 +995,7 @@ func (shr socketHandlerRegister) MessageReactionRemoveAllChan(handler chan *Mess
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionRemoveEmoji(handler handlerMessageReactionRemoveEmoji, moreHandlers ...handlerMessageReactionRemoveEmoji) {
-	shr.evtName = EvtMessageReactionRemoveEmoji
+	shr.evtName = event.MessageReactionRemoveEmoji
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1003,7 +1003,7 @@ func (shr socketHandlerRegister) MessageReactionRemoveEmoji(handler handlerMessa
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageReactionRemoveEmojiChan(handler chan *MessageReactionRemoveEmoji, moreHandlers ...chan *MessageReactionRemoveEmoji) {
-	shr.evtName = EvtMessageReactionRemoveEmoji
+	shr.evtName = event.MessageReactionRemoveEmoji
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1011,7 +1011,7 @@ func (shr socketHandlerRegister) MessageReactionRemoveEmojiChan(handler chan *Me
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageUpdate(handler handlerMessageUpdate, moreHandlers ...handlerMessageUpdate) {
-	shr.evtName = EvtMessageUpdate
+	shr.evtName = event.MessageUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1019,7 +1019,7 @@ func (shr socketHandlerRegister) MessageUpdate(handler handlerMessageUpdate, mor
 	shr.build()
 }
 func (shr socketHandlerRegister) MessageUpdateChan(handler chan *MessageUpdate, moreHandlers ...chan *MessageUpdate) {
-	shr.evtName = EvtMessageUpdate
+	shr.evtName = event.MessageUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1027,7 +1027,7 @@ func (shr socketHandlerRegister) MessageUpdateChan(handler chan *MessageUpdate, 
 	shr.build()
 }
 func (shr socketHandlerRegister) PresenceUpdate(handler handlerPresenceUpdate, moreHandlers ...handlerPresenceUpdate) {
-	shr.evtName = EvtPresenceUpdate
+	shr.evtName = event.PresenceUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1035,7 +1035,7 @@ func (shr socketHandlerRegister) PresenceUpdate(handler handlerPresenceUpdate, m
 	shr.build()
 }
 func (shr socketHandlerRegister) PresenceUpdateChan(handler chan *PresenceUpdate, moreHandlers ...chan *PresenceUpdate) {
-	shr.evtName = EvtPresenceUpdate
+	shr.evtName = event.PresenceUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1043,7 +1043,7 @@ func (shr socketHandlerRegister) PresenceUpdateChan(handler chan *PresenceUpdate
 	shr.build()
 }
 func (shr socketHandlerRegister) Ready(handler handlerReady, moreHandlers ...handlerReady) {
-	shr.evtName = EvtReady
+	shr.evtName = event.Ready
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1051,7 +1051,7 @@ func (shr socketHandlerRegister) Ready(handler handlerReady, moreHandlers ...han
 	shr.build()
 }
 func (shr socketHandlerRegister) ReadyChan(handler chan *Ready, moreHandlers ...chan *Ready) {
-	shr.evtName = EvtReady
+	shr.evtName = event.Ready
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1059,7 +1059,7 @@ func (shr socketHandlerRegister) ReadyChan(handler chan *Ready, moreHandlers ...
 	shr.build()
 }
 func (shr socketHandlerRegister) Resumed(handler handlerResumed, moreHandlers ...handlerResumed) {
-	shr.evtName = EvtResumed
+	shr.evtName = event.Resumed
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1067,7 +1067,7 @@ func (shr socketHandlerRegister) Resumed(handler handlerResumed, moreHandlers ..
 	shr.build()
 }
 func (shr socketHandlerRegister) ResumedChan(handler chan *Resumed, moreHandlers ...chan *Resumed) {
-	shr.evtName = EvtResumed
+	shr.evtName = event.Resumed
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1075,7 +1075,7 @@ func (shr socketHandlerRegister) ResumedChan(handler chan *Resumed, moreHandlers
 	shr.build()
 }
 func (shr socketHandlerRegister) TypingStart(handler handlerTypingStart, moreHandlers ...handlerTypingStart) {
-	shr.evtName = EvtTypingStart
+	shr.evtName = event.TypingStart
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1083,7 +1083,7 @@ func (shr socketHandlerRegister) TypingStart(handler handlerTypingStart, moreHan
 	shr.build()
 }
 func (shr socketHandlerRegister) TypingStartChan(handler chan *TypingStart, moreHandlers ...chan *TypingStart) {
-	shr.evtName = EvtTypingStart
+	shr.evtName = event.TypingStart
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1091,7 +1091,7 @@ func (shr socketHandlerRegister) TypingStartChan(handler chan *TypingStart, more
 	shr.build()
 }
 func (shr socketHandlerRegister) UserUpdate(handler handlerUserUpdate, moreHandlers ...handlerUserUpdate) {
-	shr.evtName = EvtUserUpdate
+	shr.evtName = event.UserUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1099,7 +1099,7 @@ func (shr socketHandlerRegister) UserUpdate(handler handlerUserUpdate, moreHandl
 	shr.build()
 }
 func (shr socketHandlerRegister) UserUpdateChan(handler chan *UserUpdate, moreHandlers ...chan *UserUpdate) {
-	shr.evtName = EvtUserUpdate
+	shr.evtName = event.UserUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1107,7 +1107,7 @@ func (shr socketHandlerRegister) UserUpdateChan(handler chan *UserUpdate, moreHa
 	shr.build()
 }
 func (shr socketHandlerRegister) VoiceServerUpdate(handler handlerVoiceServerUpdate, moreHandlers ...handlerVoiceServerUpdate) {
-	shr.evtName = EvtVoiceServerUpdate
+	shr.evtName = event.VoiceServerUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1115,7 +1115,7 @@ func (shr socketHandlerRegister) VoiceServerUpdate(handler handlerVoiceServerUpd
 	shr.build()
 }
 func (shr socketHandlerRegister) VoiceServerUpdateChan(handler chan *VoiceServerUpdate, moreHandlers ...chan *VoiceServerUpdate) {
-	shr.evtName = EvtVoiceServerUpdate
+	shr.evtName = event.VoiceServerUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1123,7 +1123,7 @@ func (shr socketHandlerRegister) VoiceServerUpdateChan(handler chan *VoiceServer
 	shr.build()
 }
 func (shr socketHandlerRegister) VoiceStateUpdate(handler handlerVoiceStateUpdate, moreHandlers ...handlerVoiceStateUpdate) {
-	shr.evtName = EvtVoiceStateUpdate
+	shr.evtName = event.VoiceStateUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1131,7 +1131,7 @@ func (shr socketHandlerRegister) VoiceStateUpdate(handler handlerVoiceStateUpdat
 	shr.build()
 }
 func (shr socketHandlerRegister) VoiceStateUpdateChan(handler chan *VoiceStateUpdate, moreHandlers ...chan *VoiceStateUpdate) {
-	shr.evtName = EvtVoiceStateUpdate
+	shr.evtName = event.VoiceStateUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1139,7 +1139,7 @@ func (shr socketHandlerRegister) VoiceStateUpdateChan(handler chan *VoiceStateUp
 	shr.build()
 }
 func (shr socketHandlerRegister) WebhooksUpdate(handler handlerWebhooksUpdate, moreHandlers ...handlerWebhooksUpdate) {
-	shr.evtName = EvtWebhooksUpdate
+	shr.evtName = event.WebhooksUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)
@@ -1147,7 +1147,7 @@ func (shr socketHandlerRegister) WebhooksUpdate(handler handlerWebhooksUpdate, m
 	shr.build()
 }
 func (shr socketHandlerRegister) WebhooksUpdateChan(handler chan *WebhooksUpdate, moreHandlers ...chan *WebhooksUpdate) {
-	shr.evtName = EvtWebhooksUpdate
+	shr.evtName = event.WebhooksUpdate
 	shr.handlers = append(shr.handlers, handler)
 	for _, h := range moreHandlers {
 		shr.handlers = append(shr.handlers, h)

@@ -3,6 +3,7 @@
 package disgord
 
 import (
+	"github.com/andersfylling/disgord/internal/event"
 	"github.com/andersfylling/disgord/internal/logger"
 	"github.com/andersfylling/disgord/json"
 	"io/ioutil"
@@ -125,7 +126,7 @@ func BenchmarkClient_On(b *testing.B) {
 
 		cp := make([]byte, len(msgData))
 		copy(cp, msgData)
-		evt := &gateway.Event{Name: EvtMessageCreate, Data: cp}
+		evt := &gateway.Event{Name: event.MessageCreate, Data: cp}
 		c.eventChan <- evt
 		wg.Wait()
 	}
@@ -150,7 +151,7 @@ func TestClient_Once(t *testing.T) {
 	go c.demultiplexer(dispatcher, input)
 
 	trigger := func() {
-		input <- &gateway.Event{Name: EvtMessageCreate, Data: []byte(`{"content":"testing"}`)}
+		input <- &gateway.Event{Name: event.MessageCreate, Data: []byte(`{"content":"testing"}`)}
 	}
 
 	base := dispatcher.nrOfAliveHandlers()
@@ -221,9 +222,9 @@ func TestClient_On(t *testing.T) {
 	wg.Add(2)
 
 	// trigger the handler twice
-	input <- &gateway.Event{Name: EvtMessageCreate, Data: []byte(`{}`)}
-	input <- &gateway.Event{Name: EvtMessageCreate, Data: []byte(`{}`)}
-	input <- &gateway.Event{Name: EvtReady, Data: []byte(`{}`)}
+	input <- &gateway.Event{Name: event.MessageCreate, Data: []byte(`{}`)}
+	input <- &gateway.Event{Name: event.MessageCreate, Data: []byte(`{}`)}
+	input <- &gateway.Event{Name: event.Ready, Data: []byte(`{}`)}
 	wg.Wait()
 }
 
@@ -269,8 +270,8 @@ func TestClient_On_Middleware(t *testing.T) {
 	})
 	wg.Add(2)
 
-	input <- &gateway.Event{Name: EvtMessageCreate, Data: []byte(`{"content":"` + prefix + ` testing"}`)}
-	input <- &gateway.Event{Name: EvtReady, Data: []byte(`{"content":"testing"}`)}
+	input <- &gateway.Event{Name: event.MessageCreate, Data: []byte(`{"content":"` + prefix + ` testing"}`)}
+	input <- &gateway.Event{Name: event.Ready, Data: []byte(`{"content":"testing"}`)}
 	wg.Wait()
 }
 

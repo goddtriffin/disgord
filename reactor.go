@@ -6,6 +6,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/andersfylling/disgord/internal/event"
 	"github.com/andersfylling/disgord/internal/gateway"
 	"github.com/andersfylling/disgord/json"
 )
@@ -44,7 +45,7 @@ func (c *Client) demultiplexer(d *dispatcher, read <-chan *gateway.Event) {
 		// 	continue // move on to next event
 		// }
 
-		if evt.Name == EvtUserUpdate {
+		if evt.Name == event.UserUpdate {
 			_ = json.Unmarshal(evt.Data, c.currentUser)
 			executeInternalUpdater(c.currentUser)
 		}

@@ -5,6 +5,8 @@ package disgord
 import (
 	"sync"
 	"testing"
+
+	"github.com/andersfylling/disgord/internal/event"
 )
 
 func Test_isHandler(t *testing.T) {
@@ -32,7 +34,7 @@ func TestRegister(t *testing.T) {
 	d := newDispatcher()
 	handler := make(chan *MessageCreate)
 
-	if err := d.register(EvtMessageCreate, handler); err != nil {
+	if err := d.register(event.MessageCreate, handler); err != nil {
 		t.Fatal(err)
 	}
 
@@ -42,7 +44,7 @@ func TestRegister(t *testing.T) {
 		<-handler
 		wg.Done()
 	}()
-	d.dispatch(EvtMessageCreate, &MessageCreate{})
+	d.dispatch(event.MessageCreate, &MessageCreate{})
 	wg.Wait()
 }
 
@@ -51,7 +53,7 @@ func TestCtrl_CloseChannel(t *testing.T) {
 	handler := make(chan *MessageCreate)
 	ctrl := &Ctrl{Channel: handler}
 
-	if err := d.register(EvtMessageCreate, handler, ctrl); err != nil {
+	if err := d.register(event.MessageCreate, handler, ctrl); err != nil {
 		t.Fatal(err)
 	}
 
@@ -61,7 +63,7 @@ func TestCtrl_CloseChannel(t *testing.T) {
 		<-handler
 		wg.Done()
 	}()
-	d.dispatch(EvtMessageCreate, &MessageCreate{})
+	d.dispatch(event.MessageCreate, &MessageCreate{})
 	wg.Wait()
 
 	// close channel
@@ -71,5 +73,5 @@ func TestCtrl_CloseChannel(t *testing.T) {
 	}
 
 	// should not hang
-	d.dispatch(EvtMessageCreate, &MessageCreate{})
+	d.dispatch(event.MessageCreate, &MessageCreate{})
 }

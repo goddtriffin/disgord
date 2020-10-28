@@ -17,7 +17,7 @@ func AllEventsExcept(except ...string) []string {
     evtsMap := map[string]int8{
     {{- range .}}
         {{- if .IsDiscordEvent }}
-            Evt{{.}}: 0,
+            event.{{.}}: 0,
         {{- end}}
     {{- end}}
     }
@@ -38,7 +38,7 @@ func AllEventsExcept(except ...string) []string {
 {{range .}}
 {{if .IsDiscordEvent}}
 {{.RenderDocs}}
-const Evt{{.}} = event.{{.}} {{end}}
+//const Evt{{.}} = event.{{.}} {{end}}
 
 func (h *{{.}}) setShardID(id uint) { h.ShardID = id }
 
@@ -93,7 +93,7 @@ func (shr socketHandlerRegister) WithMiddleware(first Middleware, extra ...Middl
 {{range .}}
 {{- if .IsDiscordEvent}}
 func (shr socketHandlerRegister) {{.}}(handler handler{{.}}, moreHandlers ...handler{{.}}) {
-    shr.evtName = Evt{{.}}
+    shr.evtName = event.{{.}}
     shr.handlers = append(shr.handlers, handler)
     for _, h := range moreHandlers {
         shr.handlers = append(shr.handlers, h)
@@ -101,7 +101,7 @@ func (shr socketHandlerRegister) {{.}}(handler handler{{.}}, moreHandlers ...han
     shr.build()
 }
 func (shr socketHandlerRegister) {{.}}Chan(handler chan *{{.}}, moreHandlers ...chan *{{.}}) {
-    shr.evtName = Evt{{.}}
+    shr.evtName = event.{{.}}
     shr.handlers = append(shr.handlers, handler)
     for _, h := range moreHandlers {
         shr.handlers = append(shr.handlers, h)

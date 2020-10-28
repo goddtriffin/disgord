@@ -8,6 +8,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/andersfylling/disgord/internal/event"
 	"github.com/andersfylling/disgord/internal/gateway"
 )
 
@@ -27,45 +28,45 @@ func injectRandomEvents(t *testing.T, callback func(name string, evt interface{}
 
 	// first wave, just empty content
 	// looks for incorrect type casting
-	events[EvtReady] = &Ready{
+	events[event.Ready] = &Ready{
 		User: &User{},
 	}
-	events[EvtChannelCreate] = &ChannelCreate{
+	events[event.ChannelCreate] = &ChannelCreate{
 		Channel: &Channel{},
 	}
-	events[EvtChannelDelete] = &ChannelDelete{
+	events[event.ChannelDelete] = &ChannelDelete{
 		Channel: &Channel{},
 	}
-	events[EvtGuildCreate] = &GuildCreate{
+	events[event.GuildCreate] = &GuildCreate{
 		Guild: &Guild{},
 	}
-	events[EvtGuildDelete] = &GuildDelete{
+	events[event.GuildDelete] = &GuildDelete{
 		UnavailableGuild: &GuildUnavailable{},
 	}
-	events[EvtGuildBanRemove] = &GuildBanRemove{
+	events[event.GuildBanRemove] = &GuildBanRemove{
 		User: &User{},
 	}
-	events[EvtGuildIntegrationsUpdate] = &GuildIntegrationsUpdate{}
-	events[EvtGuildMemberRemove] = &GuildMemberRemove{
+	events[event.GuildIntegrationsUpdate] = &GuildIntegrationsUpdate{}
+	events[event.GuildMemberRemove] = &GuildMemberRemove{
 		User: &User{},
 	}
-	events[EvtGuildMembersChunk] = &GuildMembersChunk{}
-	events[EvtGuildRoleUpdate] = &GuildRoleUpdate{
+	events[event.GuildMembersChunk] = &GuildMembersChunk{}
+	events[event.GuildRoleUpdate] = &GuildRoleUpdate{
 		Role: &Role{},
 	}
-	events[EvtMessageCreate] = &MessageCreate{
+	events[event.MessageCreate] = &MessageCreate{
 		Message: &Message{},
 	}
-	events[EvtMessageDelete] = &MessageDelete{}
-	events[EvtMessageReactionAdd] = &MessageReactionAdd{
+	events[event.MessageDelete] = &MessageDelete{}
+	events[event.MessageReactionAdd] = &MessageReactionAdd{
 		PartialEmoji: &Emoji{},
 	}
-	events[EvtMessageReactionRemoveAll] = &MessageReactionRemoveAll{}
-	events[EvtTypingStart] = &TypingStart{}
-	events[EvtVoiceStateUpdate] = &VoiceStateUpdate{
+	events[event.MessageReactionRemoveAll] = &MessageReactionRemoveAll{}
+	events[event.TypingStart] = &TypingStart{}
+	events[event.VoiceStateUpdate] = &VoiceStateUpdate{
 		VoiceState: &VoiceState{},
 	}
-	events[EvtWebhooksUpdate] = &WebhooksUpdate{}
+	events[event.WebhooksUpdate] = &WebhooksUpdate{}
 	iterate(t, events)
 
 }
